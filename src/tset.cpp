@@ -56,7 +56,7 @@ TSet& TSet::operator=(const TSet& s) // присваивание
 int TSet::operator==(const TSet& s) const // сравнение
 {
     if (MaxPower != s.MaxPower) return 0;
-    else for (int i = 0; i < BitField.GetLength(); i++) {
+    for (int i = 0; i < BitField.GetLength(); i++) {
         if (BitField.GetBit(i) != s.BitField.GetBit(i)) return 0;
     }
     return 1;
@@ -64,11 +64,11 @@ int TSet::operator==(const TSet& s) const // сравнение
 
 int TSet::operator!=(const TSet& s) const // сравнение
 {
-    if (MaxPower == s.MaxPower) return 0;
-    else for (int i = 0; i < BitField.GetLength(); i++) {
-        if (BitField.GetBit(i) == s.BitField.GetBit(i)) return 0;
+    if (MaxPower != s.MaxPower) return 1;
+    for (int i = 0; i < BitField.GetLength(); i++) {
+        if (BitField.GetBit(i) != s.BitField.GetBit(i)) return 1;
     }
-    return 1;
+    return 0;
 }
 TSet TSet::operator+(const TSet& s) // объединение
 {
