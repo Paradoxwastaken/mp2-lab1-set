@@ -109,16 +109,16 @@ TBitField TBitField::operator|(const TBitField& bf) // операция "или"
         {
 
             tbf.pMem[i] = pMem[i];
-            tbf.pMem[i] |= bf.pMem[i];
+            (i<bf.MemLen) ? tbf.pMem[i] |= bf.pMem[i] : tbf.pMem[i] |= 0;
         }
     else
         for (int i = 0; i < bf.MemLen; i++)
         {
             tbf.pMem[i] = bf.pMem[i];
-            tbf.pMem[i] |= pMem[i];
+            (i<MemLen) ? tbf.pMem[i] |= pMem[i] : tbf.pMem[i] |= 0;
         }
     return tbf;
-}
+} 
 
 TBitField TBitField::operator&(const TBitField& bf) // операция "и"
 {
@@ -129,13 +129,13 @@ TBitField TBitField::operator&(const TBitField& bf) // операция "и"
         {
 
             tbf.pMem[i] = pMem[i];
-            tbf.pMem[i] &= bf.pMem[i];
+            (i<bf.MemLen) ? tbf.pMem[i] &= bf.pMem[i] : tbf.pMem[i] &= 0;
         }
     else 
         for (int i = 0; i < bf.MemLen; i++)
         {
             tbf.pMem[i] = bf.pMem[i];
-            tbf.pMem[i] &= pMem[i];
+            (i<MemLen) ? tbf.pMem[i] &= pMem[i] : tbf.pMem[i] &= 0;
         }
     return tbf;
 }
